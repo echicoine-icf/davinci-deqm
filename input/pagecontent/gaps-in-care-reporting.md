@@ -174,9 +174,136 @@ The [Detailed Care Gap Guidance Response](StructureDefinition-gaps-guidancerespo
 
 Example Business Use Cases:
 
-* `Diabetes Management. In this scenario, a quality measure identifies a care gap related to diabetes management. The Detailed Care Gap Guidance Response profile is utilized to provide guidance on addressing this specific gap. The reasonCode element may include a standardized code representing the lack of regular A1C testing for diabetic patients. The dataRequirement element specifies the need for A1C test results and patient demographics to support the recommended action. The guidance response provides detailed instructions on implementing regular A1C testing, including the frequency, target ranges, and clinical considerations.`
+- `Diabetes Management. In this scenario, a quality measure identifies a care gap related to diabetes management. The Detailed Care Gap Guidance Response profile is utilized to provide guidance on addressing this specific gap. The reasonCode element may include a standardized code representing the lack of regular A1C testing for diabetic patients. The dataRequirement element specifies the need for A1C test results and patient demographics to support the recommended action. The guidance response provides detailed instructions on implementing regular A1C testing, including the frequency, target ranges, and clinical considerations. `
 
-* `Medication Adherence. Another use case involves a quality measure highlighting low medication adherence rates among a certain patient population. The Detailed Care Gap Guidance Response profile is employed to provide guidance on improving medication adherence. The reasonCode element might indicate non-compliance with medication regimens. The dataRequirement element may include medication history, prescription records, and patient-reported data. The guidance response offers strategies for enhancing patient education, optimizing medication schedules, and utilizing adherence monitoring tools to address the care gap effectively.`
+~~~
+{
+  "resourceType": "GuidanceResponse",
+  "id": "guidanceresponse01",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/gaps-guidanceresponse-detailedcaregap"
+    ]
+  },
+  "moduleUri": "http://someguidelineprovider.org/radiology-appropriateness-guidelines.html",
+  "status": "success",
+  "subject": {
+    "reference": "Patient/patient01"
+  },
+  "reasonCode": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/davinci-deqm/CodeSystem/care-gap-reason",
+          "code": "LackOfRegularA1CTesting",
+          "display": "Lack of Regular A1C Testing"
+        }
+      ]
+    }
+  ],
+  "dataRequirement": [
+    {
+      "type": "Observation",
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "4548-4",
+            "display": "Hemoglobin A1c"
+          }
+        ]
+      },
+      "profile": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab",
+      "mustSupport": true,
+      "constraint": [
+        {
+          "key": "1",
+          "severity": "required",
+          "human": "The A1C test observation must have a status of 'final'."
+        }
+      ]
+    },
+    {
+      "type": "Patient",
+      "profile": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-patient",
+      "mustSupport": true,
+      "constraint": [
+        {
+          "key": "2",
+          "severity": "required",
+          "human": "The patient resource must include demographic information such as name, date of birth, and gender."
+        }
+      ]
+    }
+  ]
+}
+~~~
+
+- `Medication Adherence. Another use case involves a quality measure highlighting low medication adherence rates among a certain patient population. The Detailed Care Gap Guidance Response profile is employed to provide guidance on improving medication adherence. The reasonCode element might indicate non-compliance with medication regimens. The dataRequirement element may include medication history, prescription records, and patient-reported data. The guidance response offers strategies for enhancing patient education, optimizing medication schedules, and utilizing adherence monitoring tools to address the care gap effectively.`
+
+~~~
+{
+  "resourceType": "GuidanceResponse",
+  "id": "guidanceresponse02",
+  "meta": {
+    "profile": [
+      "http://hl7.org/fhir/us/davinci-deqm/StructureDefinition/gaps-guidanceresponse-detailedcaregap"
+    ]
+  },
+  "moduleUri": "http://someguidelineprovider.org/medication-adherence-guidelines.html",
+  "status": "success",
+  "subject": {
+    "reference": "Patient/patient02"
+  },
+  "reasonCode": [
+    {
+      "coding": [
+        {
+          "system": "http://hl7.org/fhir/us/davinci-deqm/CodeSystem/care-gap-reason",
+          "code": "NonCompliance",
+          "display": "Non-compliance with medication regimens"
+        }
+      ]
+    }
+  ],
+  "dataRequirement": [
+    {
+      "type": "MedicationStatement",
+      "profile": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationstatement",
+      "mustSupport": true
+    },
+    {
+      "type": "MedicationRequest",
+      "profile": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-medicationrequest",
+      "mustSupport": true
+    },
+    {
+      "type": "Observation",
+      "code": {
+        "coding": [
+          {
+            "system": "http://loinc.org",
+            "code": "69453-9",
+            "display": "Medication adherence"
+          }
+        ]
+      },
+      "profile": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-observation-lab",
+      "mustSupport": true
+    },
+    {
+      "type": "QuestionnaireResponse",
+      "profile": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-questionnaireresponse",
+      "mustSupport": true
+    }
+  ],
+  "note": [
+    {
+      "text": "Consider providing patient education materials, optimizing medication schedules, and leveraging adherence monitoring tools."
+    }
+  ]
+}
+~~~
 
 By incorporating the Detailed Care Gap Guidance Response profile, healthcare organizations can receive tailored and actionable guidance on addressing specific care gaps. The inclusion of reasonCode and dataRequirement enables standardized categorization, context-specific recommendations, and ensures a more focused approach to quality improvement efforts.
 
