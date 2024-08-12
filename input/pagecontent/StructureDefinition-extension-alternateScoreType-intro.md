@@ -8,6 +8,7 @@ The following data-elements are mandatory (i.e data MUST be present).
 
 <!--End Generated Intro (DO NOT REMOVE)-->
 
+
 <!-- alternateScoreType
 StructureDefinition-extension-alternateScoreType-intro.md -->
 Example can be found in [Summary MeasureReport Date of Last Power Outage]

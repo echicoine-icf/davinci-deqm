@@ -23,6 +23,7 @@ The following data-elements are mandatory (i.e data MUST be present).
 <!--End Generated Intro (DO NOT REMOVE)-->
 
 
+
 {% assign id = {{page.id}} %}
 
 This profile builds on [Composition](https://www.hl7.org/fhir/composition.html).

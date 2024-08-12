@@ -8,6 +8,7 @@ The following data-elements are mandatory (i.e data MUST be present).
 
 <!--End Generated Intro (DO NOT REMOVE)-->
 
+
 Example can be found in [Datax Measurereport01] and [Consumer Server CapabilityStatement]
 
 [Datax Measurereport01]: MeasureReport-datax-measurereport01.html

@@ -8,6 +8,7 @@ The following data-elements are mandatory (i.e data MUST be present).
 
 <!--End Generated Intro (DO NOT REMOVE)-->
 
+
 <!-- Reporting reporterGroup
 StructureDefinition-extension-reporterGroup-intro.md -->
 Example can be found in [Summ Measurereport01]

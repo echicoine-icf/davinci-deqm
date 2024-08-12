@@ -8,6 +8,7 @@ The following data-elements are mandatory (i.e data MUST be present).
 
 <!--End Generated Intro (DO NOT REMOVE)-->
 
+
 <!-- StructureDefinition-extension-measureScoring-intro.md
 measureScoring  -->
 Example can be found in [Indv Measurereport01]

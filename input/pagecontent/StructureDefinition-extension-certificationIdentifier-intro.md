@@ -8,6 +8,7 @@ The following data-elements are mandatory (i.e data MUST be present).
 
 <!--End Generated Intro (DO NOT REMOVE)-->
 
+
 <!-- Cert id:
 StructureDefinition-extension-certificationIdentifier-intro.md -->
 
